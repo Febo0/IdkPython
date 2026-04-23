@@ -2,15 +2,11 @@ import random # Importiamo la libreria per generare numeri casuali
 
 #Function that generates a fake ip address
 def generate_random_ip():
-    # Usiamo randint(0, 20) per variare solo l'ultimo blocco dell'IP
     return f"192.168.1.{random.randint(0,20)}"
 
 #Function that checks whether the ip address is on the blacklist
 def check_firewall_rules(ip, rules):
-    for rule_ip, action in rules.items():
-        if ip == rule_ip:
-            return action
-    return "allow"
+    return rules.get(ip, "allow")
 
 
 def main():
